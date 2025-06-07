@@ -1,6 +1,7 @@
 import type { FC } from "react";
 
 import { Code2 } from "lucide-react";
+import { cn } from "@workspace/ui/lib/utils";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -25,40 +26,29 @@ const FooterSection: FC<FooterSectionProps> = (props) => {
     <div>
       <h3 className="font-semibold mb-4">{title}</h3>
       <ul className="space-y-2 text-sm text-muted-foreground">
-        {links.map(({ label, href, imgSrc }) => {
-          if (imgSrc) {
-            return (
-              <li key={label}>
-                <Link
-                  href={href}
-                  target="_blank"
-                  className="hover:text-primary flex flex-row gap-2"
-                >
-                  <Image
-                    src={imgSrc}
-                    alt={`${label} icon`}
-                    width={20}
-                    height={20}
-                    className="invert-0 dark:invert-1 bg-white"
-                  />
-                  {label}
-                </Link>
-              </li>
-            );
-          }
-
-          return (
-            <li key={label}>
-              <Link
-                href={href}
-                target="_blank"
-                className="hover:text-primary transition-colors"
-              >
-                {label}
-              </Link>
-            </li>
-          );
-        })}
+        {links.map(({ label, href, imgSrc }) => (
+          <li key={label}>
+            <Link
+              href={href}
+              target="_blank"
+              className={cn(
+                "hover:text-primary",
+                imgSrc ? "flex flex-row gap-2" : "transition-colors",
+              )}
+            >
+              {imgSrc && (
+                <Image
+                  src={imgSrc}
+                  alt={`${label} icon`}
+                  width={20}
+                  height={20}
+                  className="invert-0 dark:invert-1 bg-white"
+                />
+              )}
+              {label}
+            </Link>
+          </li>
+        ))}
       </ul>
     </div>
   );
