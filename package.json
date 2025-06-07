@@ -1,0 +1,33 @@
+{
+  "name": "velokit",
+  "version": "0.0.0",
+  "private": true,
+  "keywords": [
+    "turbo",
+    "nextjs",
+    "tailwind css",
+    "shadcn/ui",
+    "prisma",
+    "supabase"
+  ],
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@workspace/eslint-config": "workspace:*",
+    "@workspace/typescript-config": "workspace:*",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.0",
+    "prettier": "^3.5.3",
+    "turbo": "^2.5.4",
+    "typescript": "5.8.3"
+  },
+  "packageManager": "pnpm@10.11.1",
+  "engines": {
+    "node": ">=22.16.0"
+  }
+}
