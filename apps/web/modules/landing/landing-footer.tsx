@@ -1,11 +1,11 @@
 import type { FC } from "react";
 
-import { Code2, Twitter, Github } from "lucide-react";
+import { Code2 } from "lucide-react";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import { APP_CONFIG } from "@/config/app";
-import Image from "next/image";
 
 type FooterLink = {
   href: string;
