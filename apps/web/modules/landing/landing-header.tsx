@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Button } from "@workspace/ui/components/button";
 
 import { ModeToggle } from "@/components/mode-toggle";
+import { APP_CONFIG } from "@/config/app";
 
 export type LandingHeaderProps = {};
 
@@ -40,7 +41,7 @@ export const LandingHeader: FC<LandingHeaderProps> = () => {
             </Link>
             <Button variant="outline" size="sm">
               <Github className="h-4 w-4 mr-2" />
-              GitHub
+              <Link href={APP_CONFIG.GITHUB_REPO_URL}>GitHub</Link>
             </Button>
           </nav>
         </div>

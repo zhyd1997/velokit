@@ -4,6 +4,8 @@ import { Code2 } from "lucide-react";
 
 import Link from "next/link";
 
+import { APP_CONFIG } from "@/config/app";
+
 type FooterLink = {
   href: string;
   label: string;
@@ -49,7 +51,7 @@ export const LandingFooter: FC<LandingFooterProps> = () => {
       id: "community",
       title: "Community",
       links: [
-        { href: "#", label: "GitHub" },
+        { href: APP_CONFIG.GITHUB_REPO_URL, label: "GitHub" },
         { href: "#", label: "Discord" },
         { href: "#", label: "Twitter" },
       ],

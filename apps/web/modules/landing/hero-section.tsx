@@ -5,6 +5,9 @@ import { Button } from "@workspace/ui/components/button";
 
 import { Github, Zap } from "lucide-react";
 
+import Link from "next/link";
+import { APP_CONFIG } from "@/config/app";
+
 export type HeroSectionProps = {};
 
 export const HeroSection: FC<HeroSectionProps> = () => {
@@ -29,7 +32,9 @@ export const HeroSection: FC<HeroSectionProps> = () => {
           </Button>
           <Button variant="outline" size="lg" className="text-lg px-8">
             <Github className="h-4 w-4 mr-2" />
-            View on GitHub
+            <Link href={APP_CONFIG.GITHUB_REPO_URL} target="_blank">
+              View on GitHub
+            </Link>
           </Button>
         </div>
       </div>
