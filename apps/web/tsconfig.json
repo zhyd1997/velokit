@@ -5,7 +5,7 @@
     "paths": {
       "@/*": ["./*"],
       "@workspace/ui/*": ["../../packages/ui/src/*"],
-      "@softmaple/db/*": ["../../packages/db/src/*"]
+      "@workspace/db/*": ["../../packages/db/src/*"]
     },
     "plugins": [
       {
