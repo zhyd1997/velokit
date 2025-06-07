@@ -1,14 +1,16 @@
 import type { FC } from "react";
 
-import { Code2 } from "lucide-react";
+import { Code2, Twitter, Github } from "lucide-react";
 
 import Link from "next/link";
 
 import { APP_CONFIG } from "@/config/app";
+import Image from "next/image";
 
 type FooterLink = {
   href: string;
   label: string;
+  imgSrc?: string;
 };
 
 type FooterSectionProps = {
@@ -16,23 +18,51 @@ type FooterSectionProps = {
   links: FooterLink[];
 };
 
-const FooterSection: FC<FooterSectionProps> = ({ title, links }) => (
-  <div>
-    <h3 className="font-semibold mb-4">{title}</h3>
-    <ul className="space-y-2 text-sm text-muted-foreground">
-      {links.map((link) => (
-        <li key={link.label}>
-          <Link
-            href={link.href}
-            className="hover:text-primary transition-colors"
-          >
-            {link.label}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+const FooterSection: FC<FooterSectionProps> = (props) => {
+  const { title, links } = props;
+
+  return (
+    <div>
+      <h3 className="font-semibold mb-4">{title}</h3>
+      <ul className="space-y-2 text-sm text-muted-foreground">
+        {links.map(({ label, href, imgSrc }) => {
+          if (imgSrc) {
+            return (
+              <li key={label}>
+                <Link
+                  href={href}
+                  target="_blank"
+                  className="hover:text-primary flex flex-row gap-2"
+                >
+                  <Image
+                    src={imgSrc}
+                    alt={`${label} icon`}
+                    width={20}
+                    height={20}
+                    className="invert-0 dark:invert-1 bg-white"
+                  />
+                  {label}
+                </Link>
+              </li>
+            );
+          }
+
+          return (
+            <li key={label}>
+              <Link
+                href={href}
+                target="_blank"
+                className="hover:text-primary transition-colors"
+              >
+                {label}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
 
 export type LandingFooterProps = {};
 
@@ -51,9 +81,13 @@ export const LandingFooter: FC<LandingFooterProps> = () => {
       id: "community",
       title: "Community",
       links: [
-        { href: APP_CONFIG.GITHUB_REPO_URL, label: "GitHub" },
-        { href: "#", label: "Discord" },
-        { href: "#", label: "Twitter" },
+        {
+          href: APP_CONFIG.GITHUB_REPO_URL,
+          label: "GitHub",
+          imgSrc: "/images/github.svg",
+        },
+        { href: "#", label: "Discord", imgSrc: "/images/discord.svg" },
+        { href: APP_CONFIG.X_LINK, label: "X", imgSrc: "/images/x.svg" },
       ],
     },
     {
