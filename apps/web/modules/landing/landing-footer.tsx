@@ -1,14 +1,17 @@
 import type { FC } from "react";
 
 import { Code2 } from "lucide-react";
+import { cn } from "@workspace/ui/lib/utils";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import { APP_CONFIG } from "@/config/app";
 
 type FooterLink = {
   href: string;
   label: string;
+  imgSrc?: string;
 };
 
 type FooterSectionProps = {
@@ -16,23 +19,40 @@ type FooterSectionProps = {
   links: FooterLink[];
 };
 
-const FooterSection: FC<FooterSectionProps> = ({ title, links }) => (
-  <div>
-    <h3 className="font-semibold mb-4">{title}</h3>
-    <ul className="space-y-2 text-sm text-muted-foreground">
-      {links.map((link) => (
-        <li key={link.label}>
-          <Link
-            href={link.href}
-            className="hover:text-primary transition-colors"
-          >
-            {link.label}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+const FooterSection: FC<FooterSectionProps> = (props) => {
+  const { title, links } = props;
+
+  return (
+    <div>
+      <h3 className="font-semibold mb-4">{title}</h3>
+      <ul className="space-y-2 text-sm text-muted-foreground">
+        {links.map(({ label, href, imgSrc }) => (
+          <li key={label}>
+            <Link
+              href={href}
+              target="_blank"
+              className={cn(
+                "hover:text-primary",
+                imgSrc ? "flex flex-row gap-2" : "transition-colors",
+              )}
+            >
+              {imgSrc && (
+                <Image
+                  src={imgSrc}
+                  alt={`${label} icon`}
+                  width={20}
+                  height={20}
+                  className="invert-0 dark:invert-1 bg-white"
+                />
+              )}
+              {label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 export type LandingFooterProps = {};
 
@@ -51,9 +71,13 @@ export const LandingFooter: FC<LandingFooterProps> = () => {
       id: "community",
       title: "Community",
       links: [
-        { href: APP_CONFIG.GITHUB_REPO_URL, label: "GitHub" },
-        { href: "#", label: "Discord" },
-        { href: "#", label: "Twitter" },
+        {
+          href: APP_CONFIG.GITHUB_REPO_URL,
+          label: "GitHub",
+          imgSrc: "/images/github.svg",
+        },
+        { href: "#", label: "Discord", imgSrc: "/images/discord.svg" },
+        { href: APP_CONFIG.X_LINK, label: "X", imgSrc: "/images/x.svg" },
       ],
     },
     {
