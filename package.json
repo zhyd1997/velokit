@@ -10,6 +10,12 @@
     "prisma",
     "supabase"
   ],
+  "author": {
+    "name": "zhyd1997",
+    "email": "zhyd007@gmail.com",
+    "url": "https://github.com/zhyd1997"
+  },
+  "license": "MIT",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",

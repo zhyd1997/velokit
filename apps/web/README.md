@@ -5,6 +5,9 @@ First, run the development server:
 ```bash
 cp .env.example .env.local
 pnpm dev
+
+# How to add `shadcn/ui` components
+pnpm dlx shadcn@latest add # component name
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

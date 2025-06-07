@@ -1,0 +1,38 @@
+import type { FC } from "react";
+
+import { LandingHeader } from "./landing-header";
+import { HeroSection } from "./hero-section";
+import { FeaturesSection } from "./features-section";
+import { DevExperienceSection } from "./dev-experience-section";
+import { CtaSection } from "./cta-section";
+import { LandingFooter } from "./landing-footer";
+import { TechStackSection } from "./tech-stack-section";
+
+export type LandingHomeProps = {};
+
+export const LandingHome: FC<LandingHomeProps> = () => {
+  return (
+    <div className="min-h-screen bg-background">
+      {/* Header */}
+      <LandingHeader />
+
+      {/* Hero Section */}
+      <HeroSection />
+
+      {/* Tech Stack Section */}
+      <TechStackSection />
+
+      {/* Features Section */}
+      <FeaturesSection />
+
+      {/* Developer Experience Section */}
+      <DevExperienceSection />
+
+      {/* CTA Section */}
+      <CtaSection />
+
+      {/* Footer */}
+      <LandingFooter />
+    </div>
+  );
+};
