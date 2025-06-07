@@ -46,4 +46,5 @@
 
 // export type UsersType = Table<"users">;
 
+// FIXME: commented it and uncommented code snippets above after generated `@workspace/db` schema types.
 export type Database = any;
