@@ -42,7 +42,7 @@ const FooterSection: FC<FooterSectionProps> = (props) => {
                   alt={`${label} icon`}
                   width={20}
                   height={20}
-                  className="invert-0 dark:invert-1 bg-white"
+                  className="dark:invert bg-white"
                 />
               )}
               {label}
