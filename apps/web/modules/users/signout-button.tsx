@@ -13,7 +13,7 @@ export const SignoutButton: FC<SignoutButtonProps> = () => {
   const [isPending, startTransition] = useTransition();
 
   const handleLogout = () => {
-    startTransition(async () => logOut());
+    startTransition(logOut);
   };
 
   return (
