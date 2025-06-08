@@ -1,8 +1,30 @@
-# VeloKit
+# 🚀 VeloKit
 
 ![ShowCase](https://ik.imagekit.io/1winv85cn8g/VeloKit/showcase.png?updatedAt=1749315265176)
 
-## Development
+A modern fullstack starter kit powered by:
+
+- 🧱 Next.js 15 (App Router)
+- 🎨 Tailwind CSS v4
+- 🧩 shadcn/ui
+- 🧬 Prisma ORM
+- 🛰️ Supabase (Auth + DB)
+
+---
+
+## ✨ Features
+
+- Email/password authentication (Supabase)
+- Role-based access with Supabase RLS
+- Pre-configured shadcn/ui components
+- Tailwind CSS v4 + dark mode
+- REST/Edge API routes ready
+- Prisma + Supabase schema setup
+- Clean project structure with App Router
+
+---
+
+## ⚙️ Getting Started
 
 ### `pnpm` [turborepo](https://turborepo.org/) architecture:
 
