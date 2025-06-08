@@ -77,7 +77,11 @@ export const LandingFooter: FC<LandingFooterProps> = () => {
           imgSrc: "/images/github.svg",
         },
         { href: "#", label: "Discord", imgSrc: "/images/discord.svg" },
-        { href: APP_CONFIG.X_LINK, label: "X", imgSrc: "/images/x.svg" },
+        {
+          href: APP_CONFIG.X_LINK,
+          label: "X (formerly Twitter)",
+          imgSrc: "/images/x.svg",
+        },
       ],
     },
     {
