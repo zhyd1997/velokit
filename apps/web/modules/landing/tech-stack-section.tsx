@@ -12,15 +12,19 @@ type TechStackItemProps = {
   darkIconSrc?: string;
   hasBorder?: boolean;
   hasBackground?: boolean;
+  className?: string;
 };
 
-const TechStackItem: FC<TechStackItemProps> = ({
-  iconSrc,
-  label,
-  darkIconSrc,
-  hasBorder = false,
-  hasBackground = false,
-}) => {
+const TechStackItem: FC<TechStackItemProps> = (props) => {
+  const {
+    iconSrc,
+    label,
+    darkIconSrc,
+    hasBorder = false,
+    hasBackground = false,
+    className = "",
+  } = props;
+
   const { theme } = useTheme();
   const finalIconSrc = darkIconSrc && theme === "dark" ? darkIconSrc : iconSrc;
 
@@ -35,6 +39,7 @@ const TechStackItem: FC<TechStackItemProps> = ({
             alt={`${label} icon`}
             width={64}
             height={64}
+            className={className}
           />
         </span>
       </div>
@@ -63,7 +68,7 @@ export const TechStackSection: FC<TechStackSectionProps> = () => {
       key: "shadcn",
       iconSrc: "/images/shadcn-ui-icon.svg",
       label: "shadcn/ui",
-      hasBorder: true,
+      className: "dark:invert",
     },
     {
       key: "prisma",
