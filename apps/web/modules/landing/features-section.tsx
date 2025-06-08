@@ -90,8 +90,8 @@ export const FeaturesSection: FC<FeaturesSectionProps> = () => {
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature) => (
-            <FeatureCard {...feature} />
+          {features.map(({ key, ...feature }) => (
+            <FeatureCard key={key} {...feature} />
           ))}
         </div>
       </div>
