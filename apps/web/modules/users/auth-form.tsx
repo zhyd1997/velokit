@@ -43,13 +43,13 @@ export const AuthForm: FC<AuthFormProps> = () => {
           />
           {loginState?.errors?.email &&
             loginState.errors.email.errors.map((error) => (
-              <p className="text-red-500" key={error}>
+              <p className="text-red-500" key={error} aria-live="polite">
                 {error}
               </p>
             ))}
           {signupState?.errors?.email &&
             signupState.errors.email.errors.map((error) => (
-              <p className="text-red-500" key={error}>
+              <p className="text-red-500" key={error} aria-live="polite">
                 {error}
               </p>
             ))}
@@ -70,13 +70,13 @@ export const AuthForm: FC<AuthFormProps> = () => {
           />
           {loginState?.errors?.password &&
             loginState.errors.password.errors.map((error) => (
-              <p className="text-red-500" key={error}>
+              <p className="text-red-500" key={error} aria-live="polite">
                 {error}
               </p>
             ))}
           {signupState?.errors?.password &&
             signupState.errors.password.errors.map((error) => (
-              <p className="text-red-500" key={error}>
+              <p className="text-red-500" key={error} aria-live="polite">
                 {error}
               </p>
             ))}
@@ -87,23 +87,29 @@ export const AuthForm: FC<AuthFormProps> = () => {
           disabled={isLoginPending}
           formAction={loginAction}
           className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+          aria-busy={isLoginPending}
         >
-          Log in
+          {isLoginPending ? "Logging in..." : "Log in"}
         </button>
         <button
           disabled={isSignupPending}
           formAction={signupAction}
           className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+          aria-busy={isSignupPending}
         >
-          Sign up
+          {isSignupPending ? "Signing up..." : "Sign up"}
         </button>
       </div>
 
       {loginState?.message && (
-        <p className="text-red-500">{loginState?.message}</p>
+        <p className="text-red-500" aria-live="polite">
+          {loginState?.message}
+        </p>
       )}
       {signupState?.message && (
-        <p className="text-red-500">{signupState?.message}</p>
+        <p className="text-red-500" aria-live="polite">
+          {signupState?.message}
+        </p>
       )}
     </form>
   );
