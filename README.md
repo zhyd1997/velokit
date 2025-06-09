@@ -2,6 +2,8 @@
 
 ![ShowCase](https://ik.imagekit.io/1winv85cn8g/VeloKit/showcase.png?updatedAt=1749315265176)
 
+![authentication-overview.png](https://nextjs.org/_next/image?url=https%3A%2F%2Fh8DxKfmAPhn8O0p3.public.blob.vercel-storage.com%2Fdocs%2Fdark%2Fauthentication-overview.png&w=3840&q=75)
+
 A modern fullstack starter kit powered by:
 
 - 🧱 Next.js 15 (App Router)
