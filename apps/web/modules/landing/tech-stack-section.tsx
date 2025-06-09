@@ -4,12 +4,12 @@ import type { FC } from "react";
 
 import Image from "next/image";
 
-import { useTheme } from "next-themes";
+import { cn } from "@workspace/ui/lib/utils";
 
 type TechStackItemProps = {
   iconSrc: string;
   label: string;
-  darkIconSrc?: string;
+  iconSrcDark?: string;
   hasBorder?: boolean;
   hasBackground?: boolean;
   className?: string;
@@ -19,14 +19,11 @@ const TechStackItem: FC<TechStackItemProps> = (props) => {
   const {
     iconSrc,
     label,
-    darkIconSrc,
+    iconSrcDark,
     hasBorder = false,
     hasBackground = false,
     className = "",
   } = props;
-
-  const { theme } = useTheme();
-  const finalIconSrc = darkIconSrc && theme === "dark" ? darkIconSrc : iconSrc;
 
   return (
     <div className="flex flex-col items-center space-y-2">
@@ -35,12 +32,22 @@ const TechStackItem: FC<TechStackItemProps> = (props) => {
       >
         <span className="text-white font-bold text-xl">
           <Image
-            src={finalIconSrc}
+            src={iconSrc}
             alt={`${label} icon`}
             width={64}
             height={64}
-            className={className}
+            className={cn(className, iconSrcDark && "dark:hidden")}
           />
+
+          {iconSrcDark && (
+            <Image
+              src={iconSrcDark}
+              alt={`${label} icon`}
+              width={64}
+              height={64}
+              className={cn(className, "hidden dark:block")}
+            />
+          )}
         </span>
       </div>
       <span className="text-sm font-medium">{label}</span>
@@ -55,7 +62,7 @@ export const TechStackSection: FC<TechStackSectionProps> = () => {
     {
       key: "nextjs",
       iconSrc: "/images/light/nextjs-icon.svg",
-      darkIconSrc: "/images/dark/nextjs-icon.svg",
+      iconSrcDark: "/images/dark/nextjs-icon.svg",
       label: "Next.js 15",
       hasBackground: true,
     },
