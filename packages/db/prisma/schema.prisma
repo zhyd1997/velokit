@@ -16,7 +16,7 @@ datasource db {
 }
 
 model User {
-  id         String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id         String  @id @db.Uuid // no @default(dbgenerated("gen_random_uuid()")), should link to the user registered
   email      String  @unique
   first_name String?
   last_name  String?
