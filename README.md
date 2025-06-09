@@ -2,7 +2,10 @@
 
 ![ShowCase](https://ik.imagekit.io/1winv85cn8g/VeloKit/showcase.png?updatedAt=1749315265176)
 
-![authentication-overview.png](https://nextjs.org/_next/image?url=https%3A%2F%2Fh8DxKfmAPhn8O0p3.public.blob.vercel-storage.com%2Fdocs%2Fdark%2Fauthentication-overview.png&w=3840&q=75)
+<figure>
+  <img src="https://ik.imagekit.io/1winv85cn8g/VeloKit/authentication-overview_QRh-LC6Nr.png?updatedAt=1749458893183" alt="Next.js Authentication Overview" />
+  <figcaption style="text-align: center; color: grey">Copyright: <a href="https://nextjs.org/docs/app/guides/authentication">https://nextjs.org/docs/app/guides/authentication</a></figcaption>
+</figure>
 
 A modern fullstack starter kit powered by:
 
