@@ -1,19 +1,26 @@
 import { redirect } from "next/navigation";
 
-import { createClient } from "@/utils/supabase/server";
 import { SignOutButton } from "@/modules/users/signout-button";
+import { verifySession } from "@/lib/dal/verifySession";
+import { getProfileDTO } from "@/lib/dto/user";
 
 export default async function PrivatePage() {
-  const supabase = await createClient();
-
-  const { data, error } = await supabase.auth.getUser();
-  if (error || !data?.user) {
+  const session = await verifySession();
+  if (!session || !session.user) {
     redirect("/login");
   }
 
+  if (!session.user.email) {
+    return <p>Oops, there's no user email!</p>;
+  }
+
+  const data = await getProfileDTO(session.user?.email);
+
+  const { username } = data || {};
+
   return (
     <div>
-      <p>Hello {data.user.email}</p>
+      <p>👋 {username}</p>
 
       <SignOutButton />
     </div>

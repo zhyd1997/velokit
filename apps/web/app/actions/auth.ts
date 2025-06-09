@@ -8,6 +8,8 @@ import { z } from "zod/v4";
 import { createClient } from "@/utils/supabase/server";
 import type { AuthFormState } from "@/lib/definitions";
 import { AuthFormSchema } from "@/lib/definitions";
+import type { UsersType } from "@/types/model";
+import { createUser } from "@/lib/dal/user";
 
 export async function login(state: AuthFormState, formData: FormData) {
   // Validate form fields
@@ -59,8 +61,9 @@ export async function signup(state: AuthFormState, formData: FormData) {
 
   const { data: user, error: retrieveUserError } = await supabase
     .from("users")
-    .select("*")
-    .eq("email", data.email);
+    .select<string, UsersType["Row"]>("*")
+    .eq("email", data.email)
+    .maybeSingle();
 
   if (retrieveUserError) {
     return { message: retrieveUserError?.message };
@@ -70,15 +73,23 @@ export async function signup(state: AuthFormState, formData: FormData) {
     return { message: "The user is existed, try another email!" };
   }
 
-  const { error } = await supabase.auth.signUp(data);
+  const { data: registeredUser, error } = await supabase.auth.signUp(data);
 
   if (error) {
     return { message: error?.message };
   }
 
-  const { error: creatingUserError } = await supabase
-    .from("users")
-    .insert({ email: data.email });
+  if (!registeredUser) {
+    return { message: "User registered failed" };
+  }
+
+  // @ts-expect-error FIXME should not omit user id or setup it using db trigger automatically
+  const { error: creatingUserError } = await createUser({
+    id: registeredUser.user?.id,
+    email: data.email,
+    first_name: "Hello",
+    last_name: "World",
+  });
 
   if (creatingUserError) {
     return { message: creatingUserError?.message };
