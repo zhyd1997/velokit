@@ -9,7 +9,7 @@ import { createClient } from "@/utils/supabase/server";
 import type { AuthFormState } from "@/lib/definitions";
 import { AuthFormSchema } from "@/lib/definitions";
 import type { UsersType } from "@/types/model";
-import { createUser } from "@/lib/dal/user";
+import { createUser, deleteRegisteredUser } from "@/lib/dal/user";
 
 export async function login(state: AuthFormState, formData: FormData) {
   // Validate form fields
@@ -79,20 +79,28 @@ export async function signup(state: AuthFormState, formData: FormData) {
     return { message: error?.message };
   }
 
-  if (!registeredUser) {
+  if (!registeredUser || !registeredUser.user?.id) {
     return { message: "User registered failed" };
   }
 
   const { error: creatingUserError } = await createUser({
     // @ts-expect-error FIXME should not omit user id or setup it using db trigger automatically
-    id: registeredUser.user?.id,
+    id: registeredUser.user.id,
     email: data.email,
     first_name: "Hello",
     last_name: "World",
   });
 
   if (creatingUserError) {
-    return { message: creatingUserError?.message };
+    const { error: deleteUserError } = await deleteRegisteredUser(
+      registeredUser.user.id,
+    );
+
+    return {
+      message: [creatingUserError?.message, deleteUserError?.message]
+        .filter(Boolean)
+        .join("\n"),
+    };
   }
 
   revalidatePath("/", "layout");

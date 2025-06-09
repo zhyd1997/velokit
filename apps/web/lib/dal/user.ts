@@ -31,3 +31,8 @@ export const createUser = async (data: UsersType["Insert"]) => {
   const supabase = await createClient();
   return supabase.from("users").insert<UsersType["Insert"]>(data);
 };
+
+export const deleteRegisteredUser = async (userId: string) => {
+  const supabase = await createClient();
+  return supabase.auth.admin.deleteUser(userId);
+};
