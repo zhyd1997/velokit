@@ -1,12 +1,19 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const PROTECTED_ROUTES = ["/private"];
+// 1. Specify protected and public routes
+const protectedRoutes = ["/dashboard", "/private"];
+const publicRoutes = ["/login", "/signup", "/"];
 
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
     request,
   });
+
+  // 2. Check if the current route is protected or public
+  const path = request.nextUrl.pathname;
+  const isProtectedRoute = protectedRoutes.includes(path);
+  const isPublicRoute = publicRoutes.includes(path);
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -37,19 +44,25 @@ export async function updateSession(request: NextRequest) {
 
   // IMPORTANT: DO NOT REMOVE auth.getUser()
 
+  // 3. Get user info from supabase
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const isProtectedPage = PROTECTED_ROUTES.map((route) =>
-    request.nextUrl.pathname.startsWith(route),
-  ).filter(Boolean).length;
+  // 4. Redirect to /login if the user is not authenticated
+  if (isProtectedRoute && !user) {
+    const nextUrl = new URL("/login", request.nextUrl);
+    return NextResponse.redirect(nextUrl);
+  }
 
-  if (!user && isProtectedPage) {
-    // no user, potentially respond by redirecting the user to the login page
-    const url = request.nextUrl.clone();
-    url.pathname = "/login";
-    return NextResponse.redirect(url);
+  // 5. Redirect to `/dashboard` or `/private` if the user is authenticated
+  if (
+    isPublicRoute &&
+    user &&
+    !request.nextUrl.pathname.startsWith("/private")
+  ) {
+    const nextUrl = new URL("/private", request.nextUrl);
+    return NextResponse.redirect(nextUrl);
   }
 
   // IMPORTANT: You *must* return the supabaseResponse object as it is.
