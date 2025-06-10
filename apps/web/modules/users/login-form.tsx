@@ -3,12 +3,12 @@
 import type { FC } from "react";
 import { useActionState } from "react";
 
-import { login } from "@/app/actions/auth/login";
+import { loginAction } from "@/app/actions/auth/login";
 
 export type LoginFormProps = {};
 
 export const LoginForm: FC<LoginFormProps> = () => {
-  const [state, action, isPending] = useActionState(login, undefined);
+  const [state, action, isPending] = useActionState(loginAction, undefined);
 
   return (
     <form className="w-full max-w-md p-8 space-y-6">

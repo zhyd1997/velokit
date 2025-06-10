@@ -9,7 +9,7 @@ import { createClient } from "@/utils/supabase/server";
 import type { LoginFormState } from "@/lib/definitions/users/login";
 import { LoginFormSchema } from "@/lib/definitions/users/login";
 
-export async function login(state: LoginFormState, formData: FormData) {
+export async function loginAction(state: LoginFormState, formData: FormData) {
   // Validate form fields
   const validatedFields = LoginFormSchema.safeParse({
     email: formData.get("email"),
