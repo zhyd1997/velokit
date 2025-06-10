@@ -1,16 +1,19 @@
 import type { FC } from "react";
 
-import { Code2, Github } from "lucide-react";
+import { Code2 } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@workspace/ui/components/button";
 
 import { ModeToggle } from "@/components/mode-toggle";
-import { APP_CONFIG } from "@/config/app";
 
-export type LandingHeaderProps = {};
+export type LandingHeaderProps = {
+  isAuth: boolean;
+};
 
-export const LandingHeader: FC<LandingHeaderProps> = () => {
+export const LandingHeader: FC<LandingHeaderProps> = (props) => {
+  const { isAuth } = props;
+
   return (
     <header className="border-b">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -39,10 +42,15 @@ export const LandingHeader: FC<LandingHeaderProps> = () => {
             >
               Docs
             </Link>
-            <Button variant="outline" size="sm">
-              <Github className="h-4 w-4 mr-2" />
-              <Link href={APP_CONFIG.GITHUB_REPO_URL}>GitHub</Link>
-            </Button>
+            {isAuth ? (
+              <Button variant="outline" size="sm">
+                <Link href="/private">Dashboard</Link>
+              </Button>
+            ) : (
+              <Button variant="secondary" size="sm">
+                <Link href="/login">Get Started</Link>
+              </Button>
+            )}
           </nav>
         </div>
       </div>

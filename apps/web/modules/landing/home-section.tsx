@@ -1,5 +1,6 @@
 import type { FC } from "react";
 
+import type { LandingHeaderProps } from "./landing-header";
 import { LandingHeader } from "./landing-header";
 import { HeroSection } from "./hero-section";
 import { FeaturesSection } from "./features-section";
@@ -8,13 +9,13 @@ import { CtaSection } from "./cta-section";
 import { LandingFooter } from "./landing-footer";
 import { TechStackSection } from "./tech-stack-section";
 
-export type LandingHomeProps = {};
+export type LandingHomeProps = LandingHeaderProps;
 
-export const LandingHome: FC<LandingHomeProps> = () => {
+export const LandingHome: FC<LandingHomeProps> = (props) => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <LandingHeader />
+      <LandingHeader {...props} />
 
       {/* Hero Section */}
       <HeroSection />

@@ -56,14 +56,14 @@ export async function updateSession(request: NextRequest) {
   }
 
   // 5. Redirect to `/dashboard` or `/private` if the user is authenticated
-  if (
-    isPublicRoute &&
-    user &&
-    !request.nextUrl.pathname.startsWith("/private")
-  ) {
-    const nextUrl = new URL("/private", request.nextUrl);
-    return NextResponse.redirect(nextUrl);
-  }
+  // if (
+  //   isPublicRoute &&
+  //   user &&
+  //   !request.nextUrl.pathname.startsWith("/private")
+  // ) {
+  //   const nextUrl = new URL("/private", request.nextUrl);
+  //   return NextResponse.redirect(nextUrl);
+  // }
 
   // IMPORTANT: You *must* return the supabaseResponse object as it is.
   // If you're creating a new response object with NextResponse.next() make sure to:

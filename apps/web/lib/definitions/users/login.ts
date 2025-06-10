@@ -1,6 +1,6 @@
 import { z } from "zod/v4";
 
-export const AuthFormSchema = z.object({
+export const LoginFormSchema = z.object({
   email: z
     .email({
       pattern: z.regexes.html5Email,
@@ -13,7 +13,7 @@ export const AuthFormSchema = z.object({
     .trim(),
 });
 
-export type AuthFormState =
+export type LoginFormState =
   | {
       errors?: {
         email?: {
