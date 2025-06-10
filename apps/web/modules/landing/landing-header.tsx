@@ -47,7 +47,7 @@ export const LandingHeader: FC<LandingHeaderProps> = (props) => {
                 <Link href="/private">Dashboard</Link>
               </Button>
             ) : (
-              <Button variant="secondary" size="sm">
+              <Button size="sm">
                 <Link href="/login">Get Started</Link>
               </Button>
             )}

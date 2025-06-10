@@ -1,7 +1,8 @@
 import type { FC } from "react";
 
 import { Button } from "@workspace/ui/components/button";
-import { FileText, ExternalLink } from "lucide-react";
+import { FileText } from "lucide-react";
+import Link from "next/link";
 
 export type CtaSectionProps = {};
 
@@ -18,8 +19,7 @@ export const CtaSection: FC<CtaSectionProps> = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button size="lg" className="text-lg px-8">
-            Get Started Now
-            <ExternalLink className="h-4 w-4 ml-2" />
+            <Link href="/login">Get Started Now</Link>
           </Button>
           <Button variant="outline" size="lg" className="text-lg px-8">
             <FileText className="h-4 w-4 mr-2" />
