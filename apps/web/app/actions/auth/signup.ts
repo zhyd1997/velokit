@@ -34,21 +34,6 @@ export async function signupAction(state: SignupFormState, formData: FormData) {
 
   const data = validatedFields.data;
 
-  // Check if user exisits in db
-  const { data: user, error: retrieveUserError } = await supabase
-    .from("users")
-    .select<string, UsersType["Row"]>("id")
-    .eq("email", data.email)
-    .maybeSingle();
-
-  if (retrieveUserError) {
-    return { message: retrieveUserError?.message };
-  }
-
-  if (user) {
-    return { message: "The user is existed, try another email!" };
-  }
-
   const { data: registeredUser, error } = await supabase.auth.signUp(data);
 
   if (error) {
