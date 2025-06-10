@@ -18,6 +18,6 @@ CREATE POLICY "User can update their own record" ON users
     USING (id = (SELECT auth.uid()))
     WITH CHECK (id = (SELECT auth.uid()));
 
-CREATE POLICY "Allow email lookup for password reset" ON users
-    FOR SELECT
-    USING (true);
+CREATE POLICY "User can delete their own record" ON users
+    FOR DELETE
+    USING (id = (SELECT auth.uid()));
