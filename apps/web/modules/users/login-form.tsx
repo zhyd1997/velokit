@@ -3,19 +3,12 @@
 import type { FC } from "react";
 import { useActionState } from "react";
 
-import { login, signup } from "@/app/actions/auth";
+import { login } from "@/app/actions/auth/login";
 
-export type AuthFormProps = {};
+export type LoginFormProps = {};
 
-export const AuthForm: FC<AuthFormProps> = () => {
-  const [loginState, loginAction, isLoginPending] = useActionState(
-    login,
-    undefined,
-  );
-  const [signupState, signupAction, isSignupPending] = useActionState(
-    signup,
-    undefined,
-  );
+export const LoginForm: FC<LoginFormProps> = () => {
+  const [state, action, isPending] = useActionState(login, undefined);
 
   return (
     <form className="w-full max-w-md p-8 space-y-6">
@@ -41,14 +34,8 @@ export const AuthForm: FC<AuthFormProps> = () => {
             required
             className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           />
-          {loginState?.errors?.email &&
-            loginState.errors.email.errors.map((error) => (
-              <p className="text-red-500" key={error} aria-live="polite">
-                {error}
-              </p>
-            ))}
-          {signupState?.errors?.email &&
-            signupState.errors.email.errors.map((error) => (
+          {state?.errors?.email &&
+            state.errors.email.errors.map((error) => (
               <p className="text-red-500" key={error} aria-live="polite">
                 {error}
               </p>
@@ -68,14 +55,8 @@ export const AuthForm: FC<AuthFormProps> = () => {
             required
             className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           />
-          {loginState?.errors?.password &&
-            loginState.errors.password.errors.map((error) => (
-              <p className="text-red-500" key={error} aria-live="polite">
-                {error}
-              </p>
-            ))}
-          {signupState?.errors?.password &&
-            signupState.errors.password.errors.map((error) => (
+          {state?.errors?.password &&
+            state.errors.password.errors.map((error) => (
               <p className="text-red-500" key={error} aria-live="polite">
                 {error}
               </p>
@@ -84,31 +65,24 @@ export const AuthForm: FC<AuthFormProps> = () => {
       </div>
       <div className="flex flex-col space-y-3">
         <button
-          disabled={isLoginPending}
-          formAction={loginAction}
+          disabled={isPending}
+          formAction={action}
           className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
-          aria-busy={isLoginPending}
+          aria-busy={isPending}
         >
-          {isLoginPending ? "Logging in..." : "Log in"}
+          {isPending ? "Logging in..." : "Log in"}
         </button>
-        <button
-          disabled={isSignupPending}
-          formAction={signupAction}
-          className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
-          aria-busy={isSignupPending}
-        >
-          {isSignupPending ? "Signing up..." : "Sign up"}
-        </button>
+        <p className="text-center text-sm text-muted-foreground">
+          Don't have an account?{" "}
+          <a href="/signup" className="text-primary hover:underline">
+            Sign up
+          </a>
+        </p>
       </div>
 
-      {loginState?.message && (
+      {state?.message && (
         <p className="text-red-500" aria-live="polite">
-          {loginState?.message}
-        </p>
-      )}
-      {signupState?.message && (
-        <p className="text-red-500" aria-live="polite">
-          {signupState?.message}
+          {state?.message}
         </p>
       )}
     </form>
