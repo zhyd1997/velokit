@@ -2,7 +2,7 @@
 
 import type { FC } from "react";
 import { useActionState } from "react";
-
+import Link from "next/link";
 import { loginAction } from "@/app/actions/auth/login";
 
 export type LoginFormProps = {};
@@ -42,12 +42,20 @@ export const LoginForm: FC<LoginFormProps> = () => {
             ))}
         </div>
         <div className="space-y-2">
-          <label
-            htmlFor="password"
-            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          >
-            Password
-          </label>
+          <div className="flex items-center justify-between">
+            <label
+              htmlFor="password"
+              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            >
+              Password
+            </label>
+            <Link
+              href="/forgot-password"
+              className="text-sm text-primary hover:underline"
+            >
+              Forgot password?
+            </Link>
+          </div>
           <input
             id="password"
             name="password"
