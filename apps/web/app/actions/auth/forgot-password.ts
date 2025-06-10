@@ -25,8 +25,6 @@ export async function forgotPasswordAction(
 
   const data = validatedFields.data;
 
-  console.log(data);
-
   const supabase = await createClient();
 
   // Check if user exisits in db
