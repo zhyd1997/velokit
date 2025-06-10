@@ -28,7 +28,7 @@ export const HeroSection: FC<HeroSectionProps> = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button size="lg" className="text-lg px-8">
-            Get Started
+            <Link href="/login">Get Started</Link>
           </Button>
           <Button variant="outline" size="lg" className="text-lg px-8">
             <Github className="h-4 w-4 mr-2" />
