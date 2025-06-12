@@ -8,7 +8,6 @@ import { z } from "zod/v4";
 import { createClient } from "@/utils/supabase/server";
 import type { SignupFormState } from "@/lib/definitions/users/signup";
 import { SignupFormSchema } from "@/lib/definitions/users/signup";
-import type { UsersType } from "@/types/model";
 import { createUser, deleteRegisteredUser } from "@/lib/dal/user";
 
 export async function signupAction(state: SignupFormState, formData: FormData) {
