@@ -27,7 +27,9 @@ export const getUser = cache(async (userId?: string) => {
   }
 });
 
-export const createUser = async (data: UsersType["Insert"]) => {
+export const createUser = async (
+  data: UsersType["Insert"] & Pick<UsersType["Row"], "id">,
+) => {
   const supabase = await createClient();
   return supabase.from("users").insert<UsersType["Insert"]>(data);
 };
