@@ -45,7 +45,6 @@ export async function signupAction(state: SignupFormState, formData: FormData) {
   }
 
   const { error: creatingUserError } = await createUser({
-    // @ts-expect-error FIXME should not omit user id or setup it using db trigger automatically
     id: registeredUser.user.id,
     email: data.email,
     first_name: data.firstName || data.fullName?.split(" ")[0] || "",
