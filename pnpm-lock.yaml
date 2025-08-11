@@ -39,7 +39,7 @@ importers:
         specifier: ^0.6.1
         version: 0.6.1(@supabase/supabase-js@2.54.0)
       '@supabase/supabase-js':
-        specifier: ^2.53.1
+        specifier: ^2.54.0
         version: 2.54.0
       '@workspace/ui':
         specifier: workspace:*
