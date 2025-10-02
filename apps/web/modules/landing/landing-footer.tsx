@@ -1,10 +1,16 @@
+"use client";
+
 import type { FC } from "react";
+import { useEffect } from "react";
 
 import { Code2 } from "lucide-react";
 import { cn } from "@workspace/ui/lib/utils";
 
 import Link from "next/link";
 import Image from "next/image";
+
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import { APP_CONFIG } from "@/config/app";
 
@@ -19,21 +25,19 @@ type FooterSectionProps = {
   links: FooterLink[];
 };
 
-const FooterSection: FC<FooterSectionProps> = (props) => {
-  const { title, links } = props;
-
+const FooterSection: FC<FooterSectionProps> = ({ title, links }) => {
   return (
-    <div>
+    <div data-aos="fade-up">
       <h3 className="font-semibold mb-4">{title}</h3>
       <ul className="space-y-2 text-sm text-muted-foreground">
         {links.map(({ label, href, imgSrc }) => (
-          <li key={label}>
+          <li key={label} data-aos="fade-right">
             <Link
               href={href}
               target="_blank"
               className={cn(
                 "hover:text-primary",
-                imgSrc ? "flex flex-row gap-2" : "transition-colors",
+                imgSrc ? "flex flex-row gap-2 items-center" : "transition-colors",
               )}
             >
               {imgSrc && (
@@ -57,6 +61,10 @@ const FooterSection: FC<FooterSectionProps> = (props) => {
 export type LandingFooterProps = {};
 
 export const LandingFooter: FC<LandingFooterProps> = () => {
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
   const footerSections = [
     {
       id: "resources",
@@ -96,10 +104,12 @@ export const LandingFooter: FC<LandingFooterProps> = () => {
   ];
 
   return (
-    <footer className="border-t py-12">
+    <footer className="border-t py-12" data-aos="fade-in">
       <div className="container mx-auto px-4">
+        {/* Grid with brand + footer sections */}
         <div className="grid md:grid-cols-4 gap-8">
-          <div>
+          {/* Brand info */}
+          <div data-aos="fade-up">
             <div className="flex items-center space-x-2 mb-4">
               <Code2 className="h-6 w-6" />
               <span className="font-bold text-xl">VeloKit</span>
@@ -109,6 +119,8 @@ export const LandingFooter: FC<LandingFooterProps> = () => {
               applications.
             </p>
           </div>
+
+          {/* Footer sections */}
           {footerSections.map((section) => (
             <FooterSection
               key={section.id}
@@ -117,7 +129,12 @@ export const LandingFooter: FC<LandingFooterProps> = () => {
             />
           ))}
         </div>
-        <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
+
+        {/* Bottom text */}
+        <div
+          className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground"
+          data-aos="zoom-in"
+        >
           <p>&copy; {new Date().getFullYear()} VeloKit. All rights reserved.</p>
         </div>
       </div>
