@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page with Animations</title>
+
+  <!-- AOS CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    section {
+      padding: 100px 20px;
+      text-align: center;
+    }
+    .hero {
+      background: #1e1e1e;
+      color: white;
+    }
+    .features {
+      background: #f4f4f4;
+    }
+    .cta {
+      background: #ff6b6b;
+      color: white;
+    }
+    h1, h2 {
+      margin: 20px 0;
+    }
+    p {
+      max-width: 600px;
+      margin: 0 auto 20px auto;
+    }
+    button {
+      padding: 12px 30px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #333;
+      color: white;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1 class="hero-text">Welcome to Our Platform</h1>
+    <p class="hero-subtext">We build amazing landing pages with smooth animations.</p>
+    <button class="hero-btn">Get Started</button>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2 data-aos="fade-up">Our Features</h2>
+    <p data-aos="fade-up" data-aos-delay="100">Feature 1: Fast and responsive design</p>
+    <p data-aos="fade-up" data-aos-delay="200">Feature 2: Interactive animations</p>
+    <p data-aos="fade-up" data-aos-delay="300">Feature 3: Modern UI components</p>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="cta">
+    <h2 data-aos="zoom-in">Join Us Today!</h2>
+    <button data-aos="zoom-in" data-aos-delay="200">Sign Up</button>
+  </section>
+
+  <!-- Scripts -->
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.0/gsap.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 1000, // animation duration
+      once: true      // only animate once
+    });
+
+    // GSAP Animations
+    gsap.from(".hero-text", { duration: 1.5, opacity: 0, y: 50 });
+    gsap.from(".hero-subtext", { duration: 1.5, opacity: 0, y: 50, delay: 0.3 });
+    gsap.from(".hero-btn", { duration: 1.5, opacity: 0, y: 50, delay: 0.6 });
+  </script>
+</body>
+</html>
