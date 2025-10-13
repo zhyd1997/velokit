@@ -60,8 +60,8 @@ importers:
         specifier: 19.2.0
         version: 19.2.0(react@19.2.0)
       zod:
-        specifier: ^4.1.11
-        version: 4.1.11
+        specifier: ^4.1.12
+        version: 4.1.12
     devDependencies:
       '@types/node':
         specifier: ^22.18.8
@@ -172,8 +172,8 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
       zod:
-        specifier: ^4.1.11
-        version: 4.1.11
+        specifier: ^4.1.12
+        version: 4.1.12
     devDependencies:
       '@tailwindcss/postcss':
         specifier: ^4.1.14
@@ -3190,8 +3190,8 @@ packages:
     peerDependencies:
       zod: ^3.25.0 || ^4.0.0
 
-  zod@4.1.11:
-    resolution: {integrity: sha512-WPsqwxITS2tzx1bzhIKsEs19ABD5vmCVa4xBo2tq/SrV4RNZtfws1EnCWQXM6yh8bD08a1idvkB5MZSBiZsjwg==}
+  zod@4.1.12:
+    resolution: {integrity: sha512-JInaHOamG8pt5+Ey8kGmdcAcg3OL9reK8ltczgHTAwNhMys/6ThXHityHxVV2p3fkw/c+MAvBHFVYHFZDmjMCQ==}
 
 snapshots:
 
@@ -4711,8 +4711,8 @@ snapshots:
       '@babel/core': 7.28.4
       '@babel/parser': 7.28.4
       eslint: 9.37.0(jiti@2.6.1)
-      zod: 4.1.11
-      zod-validation-error: 3.5.3(zod@4.1.11)
+      zod: 4.1.12
+      zod-validation-error: 3.5.3(zod@4.1.12)
     transitivePeerDependencies:
       - supports-color
 
@@ -6475,8 +6475,8 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  zod-validation-error@3.5.3(zod@4.1.11):
+  zod-validation-error@3.5.3(zod@4.1.12):
     dependencies:
-      zod: 4.1.11
+      zod: 4.1.12
 
-  zod@4.1.11: {}
+  zod@4.1.12: {}
