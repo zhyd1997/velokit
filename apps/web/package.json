@@ -31,11 +31,5 @@
     "@workspace/typescript-config": "workspace:*",
     "eslint": "^9.38.0",
     "typescript": "^5.9.3"
-  },
-  "pnpm": {
-    "overrides": {
-      "@types/react": "19.2.2",
-      "@types/react-dom": "19.2.2"
-    }
   }
 }
