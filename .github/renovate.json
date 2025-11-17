@@ -51,10 +51,17 @@
       "schedule": ["before 10am on monday"]
     },
     {
+      "description": "Group Turbo updates",
+      "groupName": "Turbo",
+      "matchPackageNames": ["turbo"],
+      "automerge": false,
+      "automergeType": "pr",
+      "schedule": ["before 10am on monday"]
+    },
+    {
       "description": "Group build tools",
       "groupName": "Build tools",
       "matchPackageNames": [
-        "turbo",
         "prettier",
         "/^@tailwindcss\\//",
         "/^tailwindcss/"
