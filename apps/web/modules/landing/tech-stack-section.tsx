@@ -63,7 +63,7 @@ export const TechStackSection: FC<TechStackSectionProps> = () => {
       key: "nextjs",
       iconSrc: "/images/light/nextjs-icon.svg",
       iconSrcDark: "/images/dark/nextjs-icon.svg",
-      label: "Next.js 15",
+      label: "Next.js 16",
       hasBackground: true,
     },
     {

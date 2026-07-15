@@ -16,13 +16,13 @@ export const HeroSection: FC<HeroSectionProps> = () => {
       <div className="container mx-auto px-4 text-center">
         <Badge variant="secondary" className="mb-4">
           <Zap className="h-3 w-3 mr-1" />
-          Next.js 15 Ready
+          Next.js 16 Ready
         </Badge>
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
           VeloKit
         </h1>
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          A modern fullstack starter kit powered by Next.js 15, Supabase, and
+          A modern fullstack starter kit powered by Next.js 16, Supabase, and
           Prisma. Build production-ready applications with authentication,
           database, and UI components out of the box.
         </p>

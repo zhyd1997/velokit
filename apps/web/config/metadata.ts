@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 const siteConfig = {
-  name: "Next.js 15 Starter Kit with Turborepo",
+  name: "Next.js 16 Starter Kit with Turborepo",
   description:
-    "A modern monorepo starter kit featuring Next.js 15, Turborepo, shadcn/ui, Tailwind CSS v4, Supabase, and Prisma - perfect for building scalable full-stack applications with efficient monorepo architecture",
+    "A modern monorepo starter kit featuring Next.js 16, Turborepo, shadcn/ui, Tailwind CSS v4, Supabase, and Prisma - perfect for building scalable full-stack applications with efficient monorepo architecture",
   keywords: [
     "nextjs",
-    "next.js 15",
+    "next.js 16",
     "turborepo",
     "monorepo",
     "shadcn",
