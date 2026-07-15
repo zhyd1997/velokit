@@ -7,7 +7,7 @@
 
 A modern fullstack starter kit powered by:
 
-- 🧱 Next.js 15 (App Router)
+- 🧱 Next.js 16 (App Router)
 - 🎨 Tailwind CSS v4
 - 🧩 shadcn/ui
 - 🧬 Prisma ORM
@@ -33,7 +33,7 @@ A modern fullstack starter kit powered by:
 
 - apps
     - [web](apps/web) - Main web application
-      - **Next.js** _v15_ with `app` folder
+      - **Next.js** _v16_ with `app` folder
       - **Supabase** for database and authentication
 
 - packages
