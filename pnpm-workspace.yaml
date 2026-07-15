@@ -1,3 +1,9 @@
 packages:
   - "apps/*"
   - "packages/*"
+allowBuilds:
+  '@prisma/engines': true
+  core-js-pure: true
+  esbuild: true
+  prisma: true
+  sharp: true

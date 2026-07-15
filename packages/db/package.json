@@ -1,6 +1,7 @@
 {
   "name": "@workspace/db",
   "version": "0.6.0",
+  "type": "module",
   "description": "",
   "keywords": [],
   "author": {
@@ -11,7 +12,7 @@
   "license": "MIT",
   "scripts": {
     "db:generate": "prisma generate",
-    "db:migrate": "prisma migrate dev --skip-generate",
+    "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy"
   },
   "exports": {
@@ -19,9 +20,14 @@
   },
   "packageManager": "pnpm@11.13.0",
   "devDependencies": {
-    "prisma": "^6.17.1"
+    "@types/pg": "^8.15.5",
+    "prisma": "^7.0.0",
+    "tsx": "^4.20.5"
   },
   "dependencies": {
-    "@prisma/client": "^6.17.1"
+    "@prisma/adapter-pg": "^7.0.0",
+    "@prisma/client": "^7.0.0",
+    "dotenv": "^17.2.1",
+    "pg": "^8.16.3"
   }
 }
