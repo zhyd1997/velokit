@@ -23,9 +23,9 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
-    "@types/node": "^22.19.0",
-    "@types/react": "19.2.17",
-    "@types/react-dom": "19.2.3",
+    "@types/node": "^22.19.21",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.5",
     "@workspace/db": "workspace:*",
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
