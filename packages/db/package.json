@@ -20,7 +20,7 @@
   },
   "packageManager": "pnpm@11.13.0",
   "devDependencies": {
-    "@types/pg": "^8.15.5",
+    "@types/pg": "^8.15.6",
     "prisma": "^7.0.0",
     "tsx": "^4.20.5"
   },
